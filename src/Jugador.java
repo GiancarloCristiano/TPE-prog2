@@ -1,6 +1,7 @@
 //import java.util.ArrayList;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Jugador implements Estrategia{
 	private String nombre;
@@ -91,4 +92,19 @@ public class Jugador implements Estrategia{
 	public void setEstrategia(Estrategia estrategia) {
 		this.estrategia = estrategia;
 	}
+
+
+	@Override
+	public boolean equals(Object o) {
+		try {
+			Jugador jugador = (Jugador) o;
+			if (jugador.getNombre().equals(this.getNombre()))
+				return true;
+			else
+				return false;
+		} catch (Exception exc) {
+			return false;
+		}
+	}
+
 }

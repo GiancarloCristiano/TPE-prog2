@@ -22,10 +22,12 @@ public class Carta {
 		if(this.tienePocima()) {
 			double valorJT1masPocima = this.aplicarPocima(valorJT1, nombreAtributo);
 			valorJT1 = valorJT1masPocima;
+			this.borrarPocima();
 		}
 		if(cartaJT2.tienePocima()) {
 			double valorJT2masPocima = cartaJT2.aplicarPocima(valorJT2, nombreAtributo);
 			valorJT2 = valorJT2masPocima;
+			cartaJT2.borrarPocima();
 		}
 		return compararValores(valorJT1, valorJT2, cartaJT2);
 	}
@@ -147,7 +149,7 @@ public class Carta {
 		return this.pocima != null;
 	}
 	
-	/*public void borrarPocima() {
+	public void borrarPocima() {
 		this.pocima = null;
-	}*/
+	}
 }
