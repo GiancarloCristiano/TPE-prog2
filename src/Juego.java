@@ -35,13 +35,18 @@ public class Juego {
 
 	//COMPARAR
 	public void comparar() {
+		Jugador ganador = 
 		while(!juegoTerminado()) {
 			imprimirNroRonda();
-			ArrayList<Jugador> jugadoresRonda = jugadorTurno.enfrentarse(jugadorTurnoDos, this);
-			if (jugadoresRonda.size() != 0) {
-				Jugador ganadorRonda = determinarRol(jugadoresRonda, 1);
-				Jugador perdedorRonda = determinarRol(jugadoresRonda, 0);
-				accionesFinalizarRonda(ganadorRonda, perdedorRonda);
+			Jugador ganadorRonda = jugadorTurno.enfrentarse(jugadorTurnoDos, this);
+			if (ganadorRonda != null) {
+				jugadorTurno = ganadorRonda;
+				if jugador1.equals(jugadorTurno)
+					jugadorTurnoDos = jugador2;
+				else jugadorTurnoDos = jugador1;
+				//Jugador ganadorRonda = determinarRol(jugadoresRonda, 1);
+				//Jugador perdedorRonda = determinarRol(jugadoresRonda, 0);
+				//accionesFinalizarRonda(ganadorRonda, perdedorRonda);
 			} else {
 				imprimirEmpate();
 				empatar();
@@ -51,7 +56,7 @@ public class Juego {
 		Jugador ganoJuego = chequearGanador();
 		imprimirGanadorJuego(ganoJuego);
 	}
-
+	/*
 	public void accionesFinalizarRonda(Jugador ganadorRonda, Jugador perdedorRonda){
 		ganadorRonda.recibirCarta(perdedorRonda.darCarta());
 		ganadorRonda.enviarCartaAlFondo();
@@ -61,7 +66,7 @@ public class Juego {
 
 	public Jugador determinarRol(ArrayList<Jugador> jugadoresRonda, int indice){
 		return jugadoresRonda.get(indice);
-	}
+	}*/
 
 
 	public void setTurnos(Jugador jugadorTurno, Jugador jugadorTurnoDos) {

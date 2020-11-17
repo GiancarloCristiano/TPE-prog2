@@ -13,8 +13,7 @@ public class Jugador implements Estrategia{
 		cartasJugador = new Mazo();
 	}
 	
-	public ArrayList<Jugador> enfrentarse(Jugador jugadorTurnoDos, Juego juego) {
-		ArrayList<Jugador> aux = new ArrayList<>();
+	public Jugador enfrentarse(Jugador jugadorTurnoDos, Juego juego) {
 		Atributo atributoJPri = this.empezarRonda();
 		String nombreAtributo = atributoJPri.getNombre();
 		Carta cartaJT1 = cartasJugador.elegirPrimerCarta();
@@ -22,15 +21,27 @@ public class Jugador implements Estrategia{
 		juego.imprimirAccionesRonda(nombreAtributo, cartaJT1, cartaJT2);
 		Carta ganadora = cartaJT1.compararCartas(cartaJT2, nombreAtributo);
 		if (this.tieneCartaGanadora(ganadora)) {
-			aux.add(jugadorTurnoDos);
-			aux.add(this);
+			accionesFinalizarRonda(this, jugadorTurnoDos);
+			return this;
+
 		}
 		else if (jugadorTurnoDos.tieneCartaGanadora(ganadora)) {
-			aux.add(this);
-			aux.add(jugadorTurnoDos);
+			accionesFinalizarRonda(jugadorTurnoDos, this);
+			return jugadorTurnoDos;
 		}
-		return aux;
+		return null;
 	}
+
+
+
+	public void accionesFinalizarRonda(Jugador ganadorRonda, Jugador perdedorRonda) {
+		ganadorRonda.recibirCarta(perdedorRonda.darCarta());
+		ganadorRonda.enviarCartaAlFondo();
+		setTurnos(ganadorRonda, perdedorRonda);
+		imprimirEstadoCartas(ganadorRonda, perdedorRonda);
+	}
+
+
 
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		return cartasJugador.tieneCartaGanadora(ganadora);
