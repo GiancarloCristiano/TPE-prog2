@@ -13,35 +13,56 @@ public class Jugador implements Estrategia{
 		cartasJugador = new Mazo();
 	}
 	
-	public Jugador enfrentarse(Jugador jugadorTurnoDos, Juego juego) {
+	public Jugador enfrentarse(Jugador perdedor) {
 		Atributo atributoJPri = this.empezarRonda();
 		String nombreAtributo = atributoJPri.getNombre();
-		Carta cartaJT1 = cartasJugador.elegirPrimerCarta();
-		Carta cartaJT2 = jugadorTurnoDos.elegirPrimerCarta();
-		juego.imprimirAccionesRonda(nombreAtributo, cartaJT1, cartaJT2);
-		Carta ganadora = cartaJT1.compararCartas(cartaJT2, nombreAtributo);
+		imprimirSeleccionAtributo(nombreAtributo);
+		//sout "la carta de ":
+		Carta carta1 = cartasJugador.elegirPrimerCarta();
+		imprimirValoresCarta(this, carta1);
+		Carta carta2 = perdedor.elegirPrimerCarta();
+		imprimirValoresCarta(perdedor, carta2);
+		imprimirAccionesRonda(nombreAtributo, carta1, carta2, perdedor);
+		Carta ganadora = carta1.compararCartas(carta2, nombreAtributo);
 		if (this.tieneCartaGanadora(ganadora)) {
-			accionesFinalizarRonda(this, jugadorTurnoDos);
+			accionesFinalizarRonda(this, perdedor);
 			return this;
 
 		}
-		else if (jugadorTurnoDos.tieneCartaGanadora(ganadora)) {
-			accionesFinalizarRonda(jugadorTurnoDos, this);
-			return jugadorTurnoDos;
+		else if (perdedor.tieneCartaGanadora(ganadora)) {
+			accionesFinalizarRonda(perdedor, this);
+			return perdedor;
 		}
 		return null;
 	}
 
 
+	public void imprimirSeleccionAtributo(String nombreAtributo){
+		System.out.println("El jugador " + this.getNombre().toUpperCase() + " selecciona competir por el atributo "+ nombreAtributo.toUpperCase());
+	}
+
+	public void imprimirValoresCarta(Jugador j, Carta carta){
+		System.out.println("La carta de " + j.getNombre().toUpperCase()+" es " + carta.getNombrePersonaje() + " con "+nombreAtributo+" "+carta.getValorAtributoPorNombre(nombreAtributo));
+		if(carta.tienePocima())
+			imprimirAccionPocima(carta, nombreAtributo);
+	}
 
 	public void accionesFinalizarRonda(Jugador ganadorRonda, Jugador perdedorRonda) {
 		ganadorRonda.recibirCarta(perdedorRonda.darCarta());
 		ganadorRonda.enviarCartaAlFondo();
-		setTurnos(ganadorRonda, perdedorRonda);
 		imprimirEstadoCartas(ganadorRonda, perdedorRonda);
 	}
 
 
+	private void imprimirEstadoCartas(Jugador ganador, Jugador perdedor) {
+		System.out.println("Gana la ronda " + ganador.getNombre().toUpperCase()+", queda con "+ganador.cantidadCartas()+" cartas y "+perdedor.getNombre()+" posee ahora "+perdedor.cantidadCartas()+" cartas.\n");
+	}
+
+	public void imprimirAccionesRonda(String nombreAtributo, Carta cartaJT1, Carta cartaJT2, Jugador perdedor) {
+		imprimirSeleccionJturno(this, nombreAtributo);
+		imprimirAccionJugador(this, nombreAtributo, cartaJT1);
+		imprimirAccionJugador(perdedor, nombreAtributo, cartaJT2);
+	}
 
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		return cartasJugador.tieneCartaGanadora(ganadora);

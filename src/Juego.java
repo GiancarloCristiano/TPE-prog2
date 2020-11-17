@@ -6,8 +6,8 @@ public class Juego {
 	private static int nroRonda = 1;
 	private Jugador jugador1;
 	private Jugador jugador2;
-	private Jugador jugadorTurno;
-	private Jugador jugadorTurnoDos;
+	private Jugador ganadorRonda;
+	private Jugador perdedorRonda;
 	private Mazo mazo;
 	private boolean seJuegaConPocimas;
 	private ArrayList<Pocima> pocimas;
@@ -18,8 +18,8 @@ public class Juego {
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
 		this.mazo = mazo;
-		this.jugadorTurno = jugador1;
-		this.jugadorTurnoDos = jugador2;
+		this.ganadorRonda = jugador1;
+		this.perdedorRonda = jugador2;
 		this.seJuegaConPocimas = seJuegaConPocimas;
 		pocimas = new ArrayList<Pocima>();
 	}
@@ -35,16 +35,12 @@ public class Juego {
 
 	//COMPARAR
 	public void comparar() {
-		Jugador ganador = 
 		while(!juegoTerminado()) {
 			imprimirNroRonda();
-			Jugador ganadorRonda = jugadorTurno.enfrentarse(jugadorTurnoDos, this);
+			ganadorRonda = ganadorRonda.enfrentarse(perdedorRonda);
+			setPerdedor();
 			if (ganadorRonda != null) {
-				jugadorTurno = ganadorRonda;
-				if jugador1.equals(jugadorTurno)
-					jugadorTurnoDos = jugador2;
-				else jugadorTurnoDos = jugador1;
-				//Jugador ganadorRonda = determinarRol(jugadoresRonda, 1);
+			//Jugador ganadorRonda = determinarRol(jugadoresRonda, 1);
 				//Jugador perdedorRonda = determinarRol(jugadoresRonda, 0);
 				//accionesFinalizarRonda(ganadorRonda, perdedorRonda);
 			} else {
@@ -56,6 +52,30 @@ public class Juego {
 		Jugador ganoJuego = chequearGanador();
 		imprimirGanadorJuego(ganoJuego);
 	}
+
+	/*//COMPARAR
+	public void comparar() {
+		while(!juegoTerminado()) {
+			imprimirNroRonda();
+			Jugador ganadorRonda = jugadorTurno.enfrentarse(jugadorTurnoDos, this);
+			if (ganadorRonda != null) {
+
+				//Jugador ganadorRonda = determinarRol(jugadoresRonda, 1);
+				//Jugador perdedorRonda = determinarRol(jugadoresRonda, 0);
+				//accionesFinalizarRonda(ganadorRonda, perdedorRonda);
+			} else {
+				imprimirEmpate();
+				empatar();
+			}
+			nroRonda++;
+		}
+		Jugador ganoJuego = chequearGanador();
+		imprimirGanadorJuego(ganoJuego);
+	}*/
+
+
+
+
 	/*
 	public void accionesFinalizarRonda(Jugador ganadorRonda, Jugador perdedorRonda){
 		ganadorRonda.recibirCarta(perdedorRonda.darCarta());
@@ -68,11 +88,19 @@ public class Juego {
 		return jugadoresRonda.get(indice);
 	}*/
 
+	public void setPerdedor(){
+		if (ganadorRonda.equals(jugador1))
+			perdedorRonda = jugador2;
+		if (ganadorRonda.equals(jugador2))
+			perdedorRonda = jugador1;
+		else ganadorRonda = null;
+	}
 
+	/*
 	public void setTurnos(Jugador jugadorTurno, Jugador jugadorTurnoDos) {
 		this.jugadorTurno = jugadorTurno;
 		this.jugadorTurnoDos = jugadorTurnoDos;
-	}
+	}*/
 
 	public void empatar(){
 		jugador1.enviarCartaAlFondo();
@@ -142,15 +170,16 @@ public class Juego {
 		System.out.println("---------------- RONDA " + nroRonda+" ----------------");
 	}
 
+	/*
 	public void imprimirAccionesRonda(String nombreAtributo, Carta cartaJT1, Carta cartaJT2) {
 		imprimirSeleccionJturno(jugadorTurno, nombreAtributo);
 		imprimirAccionJugador(jugadorTurno, nombreAtributo, cartaJT1);
 		imprimirAccionJugador(jugadorTurnoDos, nombreAtributo, cartaJT2);
-	}
-
+	}*/
+/*
 	private void imprimirSeleccionJturno(Jugador j, String a) {
 		System.out.println("El jugador "+j.getNombre().toUpperCase()+" selecciona competir por el atributo "+ a.toUpperCase());
-	}
+	}*/
 	
 	private void imprimirAccionJugador(Jugador j, String nombreAtributo, Carta carta) {
 		System.out.println("La carta de "+j.getNombre().toUpperCase()+" es "+carta.getNombrePersonaje()+" con "+nombreAtributo+" "+carta.getValorAtributoPorNombre(nombreAtributo));

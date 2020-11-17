@@ -14,11 +14,17 @@ public class Carta {
 	public String toString() {
 		return this.getNombrePersonaje().toUpperCase() + "    "+ atributos.toString();
 	}
-	
+
+	public void imprimirValoresCarta (Double valor, String nombre, String atributo){
+		System.out.print(" " + nombre " con " + atributo + valor);
+	}
+
 	//----------------------------------
 	public Carta compararCartas(Carta cartaJT2, String nombreAtributo) {
 		double valorJT1 = this.getValorAtributoPorNombre(nombreAtributo);
+		imprimirValoresCarta(valorJT1, this.getNombrePersonaje(), nombreAtributo);
 		double valorJT2 = cartaJT2.getValorAtributoPorNombre(nombreAtributo);
+		imprimirValoresCarta(valorJT2, cartaJT2.getNombrePersonaje(), nombreAtributo);
 		if(this.tienePocima()) {
 			double valorJT1masPocima = this.aplicarPocima(valorJT1, nombreAtributo);
 			valorJT1 = valorJT1masPocima;
