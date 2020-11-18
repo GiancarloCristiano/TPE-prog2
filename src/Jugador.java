@@ -97,9 +97,13 @@ public class Jugador implements Estrategia{
 	}
 
 	public void empatar(Jugador j1, Jugador j2){
-		System.out.println("La ronda resultó en EMPATE.\n");
 		j1.enviarCartaAlFondo();
 		j2.enviarCartaAlFondo();
+		imprimirEmpate();
+	}
+
+	public void imprimirEmpate(){
+		System.out.println("La ronda resultó en EMPATE.\n");
 	}
 
 	//GET AND SET

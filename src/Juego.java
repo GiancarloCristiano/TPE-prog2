@@ -6,8 +6,7 @@ public class Juego {
 	private static int nroRonda = 0;
 	private Jugador jugador1;
 	private Jugador jugador2;
-	private Jugador ganadorRonda;
-	private Jugador perdedorRonda;
+	private Jugador jugadorTurno;
 	private Mazo mazo;
 	private boolean seJuegaConPocimas;
 	private ArrayList<Pocima> pocimas;
@@ -18,8 +17,7 @@ public class Juego {
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
 		this.mazo = mazo;
-		this.ganadorRonda = jugador1;
-		this.perdedorRonda = jugador2;
+		this.jugadorTurno = jugador1;
 		this.seJuegaConPocimas = seJuegaConPocimas;
 		pocimas = new ArrayList<Pocima>();
 	}
@@ -38,28 +36,20 @@ public class Juego {
 		while(!juegoTerminado()) {
 			nroRonda ++;
 			imprimirNroRonda();
-			ganadorRonda = ganadorRonda.enfrentarse(perdedorRonda);
-			setPerdedor();
+			enfrentarJugadores();
 		}
 		Jugador ganoJuego = chequearGanador();
 		imprimirGanadorJuego(ganoJuego);
 	}
 
-
-	public void setPerdedor(){
-		if (ganadorRonda.equals(jugador1))
-			perdedorRonda = jugador2;
-		if (ganadorRonda.equals(jugador2))
-			perdedorRonda = jugador1;
+	public void enfrentarJugadores(){
+		if (jugadorTurno.equals(jugador1))
+			jugadorTurno = jugadorTurno.enfrentarse(jugador2);
+		else
+			jugadorTurno = jugadorTurno.enfrentarse(jugador1);
 	}
 
-
 	private Jugador chequearGanador() {
-		/*if(!jugador1.tieneCartas())
-			return jugador2;
-		if(!jugador2.tieneCartas())
-			return jugador1;
-		else {*/
 		if (jugador1.cantidadCartas() > jugador2.cantidadCartas())
 			return jugador1;
 		if (jugador1.cantidadCartas() < jugador2.cantidadCartas())
@@ -97,7 +87,7 @@ public class Juego {
 		Collections.shuffle(this.pocimas);
 	}
 
-	public void addPocima(Pocima p) {
+	public void addPocima (Pocima p) {
 		if (p != null && !pocimas.contains(p))
 			pocimas.add(p);
 	}
@@ -110,7 +100,7 @@ public class Juego {
 		return seJuegaConPocimas;
 	}
 	
-	//-----------------------------    METODOS IMPRIMIR --------------------------------------------
+	//------------------------------    METODOS IMPRIMIR    -------------------------------------
 	private void imprimirNroRonda() {
 		System.out.println("---------------- RONDA " + nroRonda+" ----------------");
 	}
