@@ -17,19 +17,14 @@ public class Jugador implements Estrategia{
 		Atributo atributoJPri = this.empezarRonda();
 		String nombreAtributo = atributoJPri.getNombre();
 		imprimirSeleccionAtributo(nombreAtributo);
-		//sout "la carta de ":
 		Carta carta1 = cartasJugador.elegirPrimerCarta();
-		imprimirValoresCarta(this, carta1);
 		Carta carta2 = perdedor.elegirPrimerCarta();
-		imprimirValoresCarta(perdedor, carta2);
-		imprimirAccionesRonda(nombreAtributo, carta1, carta2, perdedor);
-		Carta ganadora = carta1.compararCartas(carta2, nombreAtributo);
+		Carta ganadora = carta1.compararCartas(carta2, nombreAtributo, this.getNombre(), perdedor.getNombre());
 		if (this.tieneCartaGanadora(ganadora)) {
 			accionesFinalizarRonda(this, perdedor);
 			return this;
-
 		}
-		else if (perdedor.tieneCartaGanadora(ganadora)) {
+		if (perdedor.tieneCartaGanadora(ganadora)) {
 			accionesFinalizarRonda(perdedor, this);
 			return perdedor;
 		}
@@ -41,11 +36,6 @@ public class Jugador implements Estrategia{
 		System.out.println("El jugador " + this.getNombre().toUpperCase() + " selecciona competir por el atributo "+ nombreAtributo.toUpperCase());
 	}
 
-	public void imprimirValoresCarta(Jugador j, Carta carta){
-		System.out.println("La carta de " + j.getNombre().toUpperCase()+" es " + carta.getNombrePersonaje() + " con "+nombreAtributo+" "+carta.getValorAtributoPorNombre(nombreAtributo));
-		if(carta.tienePocima())
-			imprimirAccionPocima(carta, nombreAtributo);
-	}
 
 	public void accionesFinalizarRonda(Jugador ganadorRonda, Jugador perdedorRonda) {
 		ganadorRonda.recibirCarta(perdedorRonda.darCarta());
@@ -58,11 +48,6 @@ public class Jugador implements Estrategia{
 		System.out.println("Gana la ronda " + ganador.getNombre().toUpperCase()+", queda con "+ganador.cantidadCartas()+" cartas y "+perdedor.getNombre()+" posee ahora "+perdedor.cantidadCartas()+" cartas.\n");
 	}
 
-	public void imprimirAccionesRonda(String nombreAtributo, Carta cartaJT1, Carta cartaJT2, Jugador perdedor) {
-		imprimirSeleccionJturno(this, nombreAtributo);
-		imprimirAccionJugador(this, nombreAtributo, cartaJT1);
-		imprimirAccionJugador(perdedor, nombreAtributo, cartaJT2);
-	}
 
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		return cartasJugador.tieneCartaGanadora(ganadora);

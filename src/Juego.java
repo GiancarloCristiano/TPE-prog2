@@ -37,15 +37,13 @@ public class Juego {
 	public void comparar() {
 		while(!juegoTerminado()) {
 			imprimirNroRonda();
-			ganadorRonda = ganadorRonda.enfrentarse(perdedorRonda);
+			Jugador aux = ganadorRonda;
 			setPerdedor();
-			if (ganadorRonda != null) {
-			//Jugador ganadorRonda = determinarRol(jugadoresRonda, 1);
-				//Jugador perdedorRonda = determinarRol(jugadoresRonda, 0);
-				//accionesFinalizarRonda(ganadorRonda, perdedorRonda);
-			} else {
+			ganadorRonda = ganadorRonda.enfrentarse(perdedorRonda);
+			if (ganadorRonda == null) {
 				imprimirEmpate();
 				empatar();
+				ganadorRonda = aux;
 			}
 			nroRonda++;
 		}
@@ -93,7 +91,6 @@ public class Juego {
 			perdedorRonda = jugador2;
 		if (ganadorRonda.equals(jugador2))
 			perdedorRonda = jugador1;
-		else ganadorRonda = null;
 	}
 
 	/*

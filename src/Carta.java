@@ -15,36 +15,43 @@ public class Carta {
 		return this.getNombrePersonaje().toUpperCase() + "    "+ atributos.toString();
 	}
 
-	public void imprimirValoresCarta (Double valor, String nombre, String atributo){
-		System.out.print(" " + nombre " con " + atributo + valor);
+	public void imprimirValoresCarta (Double valor, String nombre, String atributo, String jugador){
+		System.out.print("La carta de " + jugador.toUpperCase() + " es " + nombre + " con " + atributo + " " + valor + ".");
+	}
+
+	public void imprimirPocima (String nombrePocima, Double valorPocima){
+		System.out.print(" Se aplicó la pócima " + nombrePocima + ". Valor resultante: " + valorPocima);
 	}
 
 	//----------------------------------
-	public Carta compararCartas(Carta cartaJT2, String nombreAtributo) {
-		double valorJT1 = this.getValorAtributoPorNombre(nombreAtributo);
-		imprimirValoresCarta(valorJT1, this.getNombrePersonaje(), nombreAtributo);
-		double valorJT2 = cartaJT2.getValorAtributoPorNombre(nombreAtributo);
-		imprimirValoresCarta(valorJT2, cartaJT2.getNombrePersonaje(), nombreAtributo);
+	public Carta compararCartas(Carta cartaJ2, String nombreAtributo, String ganador, String perdedor) {
+		double valorJ1 = this.getValorAtributoPorNombre(nombreAtributo);
+		imprimirValoresCarta(valorJ1, this.getNombrePersonaje(), nombreAtributo, ganador);
 		if(this.tienePocima()) {
-			double valorJT1masPocima = this.aplicarPocima(valorJT1, nombreAtributo);
-			valorJT1 = valorJT1masPocima;
+			double valorJ1masPocima = this.aplicarPocima(valorJ1, nombreAtributo);
+			valorJ1 = valorJ1masPocima;
+			imprimirPocima(this.pocima.getNombre(), valorJ1masPocima);
 			this.borrarPocima();
 		}
-		if(cartaJT2.tienePocima()) {
-			double valorJT2masPocima = cartaJT2.aplicarPocima(valorJT2, nombreAtributo);
-			valorJT2 = valorJT2masPocima;
-			cartaJT2.borrarPocima();
+		System.out.println();
+		double valorJ2 = cartaJ2.getValorAtributoPorNombre(nombreAtributo);
+		imprimirValoresCarta(valorJ2, cartaJ2.getNombrePersonaje(), nombreAtributo, perdedor);
+		if(cartaJ2.tienePocima()) {
+			double valorJ2masPocima = cartaJ2.aplicarPocima(valorJ2, nombreAtributo);
+			valorJ2 = valorJ2masPocima;
+			imprimirPocima(cartaJ2.pocima.getNombre(), valorJ2masPocima);
+			cartaJ2.borrarPocima();
 		}
-		return compararValores(valorJT1, valorJT2, cartaJT2);
+		System.out.println();
+		return compararValores(valorJ1, valorJ2, cartaJ2);
 	}
 	
-	public Carta compararValores(double valorJT1, double valorJT2, Carta cartaJT2) {
-		if(valorJT1 > valorJT2) 
+	public Carta compararValores(double valorJ1, double valorJ2, Carta cartaJ2) {
+		if (valorJ1 > valorJ2)
 			return this;
-		if(valorJT1 < valorJT2)
-			return cartaJT2;
-		else
-			return null;
+		if (valorJ1 < valorJ2)
+			return cartaJ2;
+		else return null;
 	}
 	//----------------------------------
 	

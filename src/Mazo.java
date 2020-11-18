@@ -133,7 +133,7 @@ public class Mazo {
 	}
 	
 	public boolean tieneCartaGanadora(Carta ganadora) {
-		if(cartas.contains(ganadora))
+		if(this.elegirPrimerCarta().equals(ganadora))
 			return true;
 		else
 			return false;
