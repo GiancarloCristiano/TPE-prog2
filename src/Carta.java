@@ -20,13 +20,12 @@ public class Carta {
 	}
 
 	public void imprimirPocima (String nombrePocima, Double valorPocima){
-		System.out.print(" Se aplicó la pócima " + nombrePocima + ". Valor resultante: " + valorPocima);
+		System.out.print(" Se aplicó la pócima " + nombrePocima + ", valor resultante: " + valorPocima + ".");
 	}
 
-	//----------------------------------
-	public Carta compararCartas(Carta cartaJ2, String nombreAtributo, String ganador, String perdedor) {
+	public Carta compararCartas (Carta cartaJ2, String nombreAtributo, String j1, String j2) {
 		double valorJ1 = this.getValorAtributoPorNombre(nombreAtributo);
-		imprimirValoresCarta(valorJ1, this.getNombrePersonaje(), nombreAtributo, ganador);
+		imprimirValoresCarta(valorJ1, this.getNombrePersonaje(), nombreAtributo, j1);
 		if(this.tienePocima()) {
 			double valorJ1masPocima = this.aplicarPocima(valorJ1, nombreAtributo);
 			valorJ1 = valorJ1masPocima;
@@ -35,7 +34,7 @@ public class Carta {
 		}
 		System.out.println();
 		double valorJ2 = cartaJ2.getValorAtributoPorNombre(nombreAtributo);
-		imprimirValoresCarta(valorJ2, cartaJ2.getNombrePersonaje(), nombreAtributo, perdedor);
+		imprimirValoresCarta(valorJ2, cartaJ2.getNombrePersonaje(), nombreAtributo, j2);
 		if(cartaJ2.tienePocima()) {
 			double valorJ2masPocima = cartaJ2.aplicarPocima(valorJ2, nombreAtributo);
 			valorJ2 = valorJ2masPocima;

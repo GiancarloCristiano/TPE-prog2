@@ -80,8 +80,7 @@ public class Mazo {
 	
 	protected void darCartas(Jugador jugador1, Jugador jugador2) {
 		mezclarCartas();
-		for(int i= 0; i< cartas.size()-1; i++) {// se nos va de rango
-			//System.out.println(cartas.get(i));
+		for(int i= 0; i< cartas.size()-1; i++) {
 			jugador1.recibirCarta(cartas.get(i));
 			cartas.remove(i); 
 			jugador2.recibirCarta(cartas.get(i));
@@ -134,6 +133,7 @@ public class Mazo {
 	
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		if(this.elegirPrimerCarta().equals(ganadora))
+			//		if(cartas.contains(ganadora))
 			return true;
 		else
 			return false;

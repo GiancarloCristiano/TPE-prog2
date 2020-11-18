@@ -3,8 +3,8 @@ public class Main {
         String mazoPath = "./src/superheroes.json";
         Mazo mazo = new Mazo();
         mazo.cargarMazo(mazoPath);
-        Jugador octi = new Jugador("octi");
-        Jugador gian = new Jugador("gian");
+        Jugador octi = new Jugador("Octi");
+        Jugador gian = new Jugador("Gian");
         Juego juego = new Juego(100, octi, gian, mazo, true);
         Timbero timbero = new Timbero(); 
         Ambicioso ambicioso = new Ambicioso(); 

@@ -3,7 +3,7 @@ import java.util.Collections;
 
 public class Juego {
 	private int cantTurnos;	
-	private static int nroRonda = 1;
+	private static int nroRonda = 0;
 	private Jugador jugador1;
 	private Jugador jugador2;
 	private Jugador ganadorRonda;
@@ -36,55 +36,15 @@ public class Juego {
 	//COMPARAR
 	public void comparar() {
 		while(!juegoTerminado()) {
+			nroRonda ++;
 			imprimirNroRonda();
-			Jugador aux = ganadorRonda;
-			setPerdedor();
 			ganadorRonda = ganadorRonda.enfrentarse(perdedorRonda);
-			if (ganadorRonda == null) {
-				imprimirEmpate();
-				empatar();
-				ganadorRonda = aux;
-			}
-			nroRonda++;
+			setPerdedor();
 		}
 		Jugador ganoJuego = chequearGanador();
 		imprimirGanadorJuego(ganoJuego);
 	}
 
-	/*//COMPARAR
-	public void comparar() {
-		while(!juegoTerminado()) {
-			imprimirNroRonda();
-			Jugador ganadorRonda = jugadorTurno.enfrentarse(jugadorTurnoDos, this);
-			if (ganadorRonda != null) {
-
-				//Jugador ganadorRonda = determinarRol(jugadoresRonda, 1);
-				//Jugador perdedorRonda = determinarRol(jugadoresRonda, 0);
-				//accionesFinalizarRonda(ganadorRonda, perdedorRonda);
-			} else {
-				imprimirEmpate();
-				empatar();
-			}
-			nroRonda++;
-		}
-		Jugador ganoJuego = chequearGanador();
-		imprimirGanadorJuego(ganoJuego);
-	}*/
-
-
-
-
-	/*
-	public void accionesFinalizarRonda(Jugador ganadorRonda, Jugador perdedorRonda){
-		ganadorRonda.recibirCarta(perdedorRonda.darCarta());
-		ganadorRonda.enviarCartaAlFondo();
-		setTurnos(ganadorRonda, perdedorRonda);
-		imprimirEstadoCartas(ganadorRonda, perdedorRonda);
-	}
-
-	public Jugador determinarRol(ArrayList<Jugador> jugadoresRonda, int indice){
-		return jugadoresRonda.get(indice);
-	}*/
 
 	public void setPerdedor(){
 		if (ganadorRonda.equals(jugador1))
@@ -93,16 +53,6 @@ public class Juego {
 			perdedorRonda = jugador1;
 	}
 
-	/*
-	public void setTurnos(Jugador jugadorTurno, Jugador jugadorTurnoDos) {
-		this.jugadorTurno = jugadorTurno;
-		this.jugadorTurnoDos = jugadorTurnoDos;
-	}*/
-
-	public void empatar(){
-		jugador1.enviarCartaAlFondo();
-		jugador2.enviarCartaAlFondo();
-	}
 
 	private Jugador chequearGanador() {
 		if(!jugador1.tieneCartas())
@@ -128,7 +78,7 @@ public class Juego {
 	}
 
 	private boolean noHayMasTurnos() {
-		if(cantTurnos - nroRonda == -1)
+		if(cantTurnos - nroRonda == 0)
 			return true;
 		else
 			return false;
@@ -167,32 +117,6 @@ public class Juego {
 		System.out.println("---------------- RONDA " + nroRonda+" ----------------");
 	}
 
-	/*
-	public void imprimirAccionesRonda(String nombreAtributo, Carta cartaJT1, Carta cartaJT2) {
-		imprimirSeleccionJturno(jugadorTurno, nombreAtributo);
-		imprimirAccionJugador(jugadorTurno, nombreAtributo, cartaJT1);
-		imprimirAccionJugador(jugadorTurnoDos, nombreAtributo, cartaJT2);
-	}*/
-/*
-	private void imprimirSeleccionJturno(Jugador j, String a) {
-		System.out.println("El jugador "+j.getNombre().toUpperCase()+" selecciona competir por el atributo "+ a.toUpperCase());
-	}*/
-	
-	private void imprimirAccionJugador(Jugador j, String nombreAtributo, Carta carta) {
-		System.out.println("La carta de "+j.getNombre().toUpperCase()+" es "+carta.getNombrePersonaje()+" con "+nombreAtributo+" "+carta.getValorAtributoPorNombre(nombreAtributo));
-		if(carta.tienePocima())
-			imprimirAccionPocima(carta, nombreAtributo);
-	}
-
-	private void imprimirAccionPocima(Carta carta, String nombreAtributo) {
-		String datos = carta.getDatosPocima(nombreAtributo);
-		System.out.println(datos);
-	}
-
-	private void imprimirEstadoCartas(Jugador ganador, Jugador perdedor) {
-		System.out.println("Gana la ronda " + ganador.getNombre().toUpperCase()+", queda con "+ganador.cantidadCartas()+" cartas y "+perdedor.getNombre()+" posee ahora "+perdedor.cantidadCartas()+" cartas.\n");
-	}
-	
 	private void imprimirGanadorJuego(Jugador jugador) {
 		if(jugador!= null)
 			System.out.println("GANÓ EL JUEGO " + jugador.getNombre().toUpperCase() +" :D" );
@@ -200,13 +124,5 @@ public class Juego {
 			System.out.println("EL JUEGO TERMINÓ EMPATADO.");
 	}
 
-	private void imprimirEmpate() {
-			System.out.println("La ronda resultó en EMPATE.\n");
-	}
-
-	/*
-	public void linea() {
-		System.out.println("--------------------------------------------------------");
-	}*/
 
 }
