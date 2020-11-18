@@ -54,7 +54,7 @@ public class Jugador implements Estrategia{
 
 	private void imprimirCantidadCartas(Jugador ganador, Jugador perdedor) {
 		System.out.println("Gana la ronda " + ganador.getNombre().toUpperCase() + " y queda con " + ganador.cantidadCartas()+" cartas ("
-				+ perdedor.getNombre().toUpperCase() + " posee ahora " + perdedor.cantidadCartas()+" cartas).\n");
+				+ perdedor.getNombre().toUpperCase() + " posee ahora " + perdedor.cantidadCartas() + " cartas).\n");
 	}
 
 

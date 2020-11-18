@@ -59,8 +59,8 @@ public class Carta {
 		ArrayList<String> listaDos = new ArrayList<String>();
 		listaUno = unaCarta.getNombreAtributos();
 		listaDos = this.getNombreAtributos();
-		for(int i =0; i < listaUno.size(); i++) {
-			if(!listaDos.contains(listaUno.get(i)))
+		for(int i = 0; i < listaUno.size(); i++) {
+			if (!listaDos.contains(listaUno.get(i)))
 				return false;									
 		}
 		return true;	
@@ -69,7 +69,7 @@ public class Carta {
 	public double getValorAtributoPorNombre(String atributo) {
 		for(int i = 0; i < atributos.size(); i++) {
 			Atributo atributoAux = atributos.get(i);
-			if(atributoAux.getNombre().equals(atributo))
+			if (atributoAux.getNombre().equals(atributo))
 				return atributoAux.getValor();
 		}
 		return -1;
@@ -77,9 +77,8 @@ public class Carta {
 
 	public ArrayList<String> getNombreAtributos(){
 		ArrayList<String> nombres = new ArrayList<String>();
-		for(int i= 0; i < atributos.size(); i++) {
+		for (int i = 0; i < atributos.size(); i++)
 			nombres.add(atributos.get(i).getNombre());
-		}
 		return nombres;
 	}
 	
@@ -92,7 +91,7 @@ public class Carta {
 	public boolean equals(Object o) {
 		try {
 			Carta unaCarta = (Carta) o;
-			if(unaCarta.getNombrePersonaje().equals(this.getNombrePersonaje()))
+			if (unaCarta.getNombrePersonaje().equals(this.getNombrePersonaje()))
 				return true;
 			else
 				return false;

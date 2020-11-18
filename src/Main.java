@@ -48,7 +48,7 @@ public class Main {
         octi.setEstrategia(ambicioso);
         gian.setEstrategia(timbero);
         juego.repartirCartas();
-        juego.comparar();
+        juego.jugar();
     }
 
 }

@@ -32,7 +32,7 @@ public class Juego {
 	}
 
 	//COMPARAR
-	public void comparar() {
+	public void jugar() {
 		while(!juegoTerminado()) {
 			nroRonda ++;
 			imprimirNroRonda();

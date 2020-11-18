@@ -39,7 +39,8 @@ public class Mazo {
                 	//atributosStr = atributosStr + nombreAtributo + ": " +
                             //atributos.getInt(nombreAtributo) + "; ";
                 }
-                this.addCartaMazo(unaCarta);
+                //if(carta.esDelMismoTipo(cartaAux))
+                	this.addCarta(unaCarta);
                 //System.out.println(nombreCarta+"\t\t\t"+atributosStr);
             }
             reader.close();
@@ -58,6 +59,16 @@ public class Mazo {
 				cartas.remove(i);
 		}
 	}
+
+	public void addCarta(Carta unaCarta) {
+		if(cartas.size() < 1 || !cartas.contains(unaCarta))
+			cartas.add(unaCarta);
+	}
+
+	/*public void addCarta(Carta unaCarta) {
+		if(cartas.size() < 1 || !cartas.contains(unaCarta))
+			cartas.add(unaCarta);
+	}*/
 	
 	public void mostrarMazo() {
 		for(int i = 0; i < getTamanioMazo(); i++) {
@@ -80,7 +91,7 @@ public class Mazo {
 	
 	protected void darCartas(Jugador jugador1, Jugador jugador2) {
 		mezclarCartas();
-		for(int i= 0; i< cartas.size()-1; i++) {
+		for(int i = 0; i < cartas.size()-1; i++) {
 			jugador1.recibirCarta(cartas.get(i));
 			cartas.remove(i); 
 			jugador2.recibirCarta(cartas.get(i));
@@ -92,27 +103,27 @@ public class Mazo {
 		return cartas.size();
 	}
 
-	public void addCartaMazo(Carta unaCarta) {
-		if(cartas.size() < 1 || !cartas.contains(unaCarta))
-			cartas.add(unaCarta);
-	}
+
 	
-	public void addCarta(Carta unaCarta) {
-		cartas.add(unaCarta);
-	}
-	
+
 	public void eliminarCarta() {
-		cartas.remove(cartas.get(0));
+		if (cartas.size() > 0) {
+			cartas.remove(0);
+		}
 	}
 	
 	public Carta elegirPrimerCarta() {
-		return cartas.get(0);
+		if (cartas.size() > 0) {
+			return cartas.get(0);
+		} else {
+			return null;
+		}
 	}
 	
 	public void enviarCartaAlFondo() {
 		Carta c = elegirPrimerCarta();
-		addCarta(c);
 		eliminarCarta();
+		addCarta(c);
 	}
 	
 	public int getCantCartas() {
