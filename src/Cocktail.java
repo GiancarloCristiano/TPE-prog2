@@ -1,4 +1,3 @@
-	
 public class Cocktail extends Pocima {
 	Pocima p1;
 	Pocima p2;

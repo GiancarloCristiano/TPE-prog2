@@ -1,4 +1,3 @@
-
 public class PocimaSelectiva extends Pocima {
 	private String nombreAtributo;
 	private double valor;

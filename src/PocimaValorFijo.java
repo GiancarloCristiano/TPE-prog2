@@ -1,4 +1,3 @@
-
 public class PocimaValorFijo extends Pocima {
 	private double valor;
 	

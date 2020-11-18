@@ -1,4 +1,3 @@
-
 public class PocimaDecrementadora extends Pocima {
 	private double valor;
 	

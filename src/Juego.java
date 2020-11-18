@@ -55,18 +55,16 @@ public class Juego {
 
 
 	private Jugador chequearGanador() {
-		if(!jugador1.tieneCartas())
+		/*if(!jugador1.tieneCartas())
 			return jugador2;
 		if(!jugador2.tieneCartas())
 			return jugador1;
-		else {
-			if (jugador1.cantidadCartas() > jugador2.cantidadCartas())
-				return jugador1;
-			if (jugador1.cantidadCartas() < jugador2.cantidadCartas())
-				return jugador2;
-			else
-				return null;
-		}
+		else {*/
+		if (jugador1.cantidadCartas() > jugador2.cantidadCartas())
+			return jugador1;
+		if (jugador1.cantidadCartas() < jugador2.cantidadCartas())
+			return jugador2;
+		else	return null;
 	}
 
 	private boolean juegoTerminado(){
@@ -123,6 +121,5 @@ public class Juego {
 		else
 			System.out.println("EL JUEGO TERMINÓ EMPATADO.");
 	}
-
 
 }

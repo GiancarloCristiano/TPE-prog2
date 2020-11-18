@@ -139,9 +139,4 @@ public class Mazo {
 			return false;
 	}
 	
-	public void linea() {
-		System.out.println("--------------------------------------------------------");
-	}
-
-	
 }

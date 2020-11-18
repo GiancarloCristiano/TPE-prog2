@@ -1,4 +1,3 @@
-
 public class Ambicioso implements Estrategia{
 
 	@Override

@@ -15,36 +15,36 @@ public class Carta {
 		return this.getNombrePersonaje().toUpperCase() + "    "+ atributos.toString();
 	}
 
+
+	public Carta compararCartas (Carta cartaJ2, String nombreAtributo, String j1, String j2) {
+		double valorJ1 = this.getValorAtributoPorNombre(nombreAtributo);
+		imprimirValoresCarta (valorJ1, this.getNombrePersonaje(), nombreAtributo, j1);
+		valorJ1 = metodosPocima(this, valorJ1, nombreAtributo);
+		double valorJ2 = cartaJ2.getValorAtributoPorNombre(nombreAtributo);
+		imprimirValoresCarta (valorJ2, cartaJ2.getNombrePersonaje(), nombreAtributo, j2);
+		valorJ2 = metodosPocima(cartaJ2, valorJ2, nombreAtributo);
+		return compararValores(valorJ1, valorJ2, cartaJ2);
+	}
+
 	public void imprimirValoresCarta (Double valor, String nombre, String atributo, String jugador){
 		System.out.print("La carta de " + jugador.toUpperCase() + " es " + nombre + " con " + atributo + " " + valor + ".");
+	}
+
+	public Double metodosPocima(Carta carta, Double valor, String nombreAtributo) {
+		if (carta.tienePocima()) {
+			double valorMasPocima = carta.aplicarPocima(valor, nombreAtributo);
+			valor = valorMasPocima;
+			imprimirPocima(carta.pocima.getNombre(), valorMasPocima);
+			carta.borrarPocima();
+		}
+		imprimirSalto();
+		return valor;
 	}
 
 	public void imprimirPocima (String nombrePocima, Double valorPocima){
 		System.out.print(" Se aplicó la pócima " + nombrePocima + ", valor resultante: " + valorPocima + ".");
 	}
 
-	public Carta compararCartas (Carta cartaJ2, String nombreAtributo, String j1, String j2) {
-		double valorJ1 = this.getValorAtributoPorNombre(nombreAtributo);
-		imprimirValoresCarta(valorJ1, this.getNombrePersonaje(), nombreAtributo, j1);
-		if(this.tienePocima()) {
-			double valorJ1masPocima = this.aplicarPocima(valorJ1, nombreAtributo);
-			valorJ1 = valorJ1masPocima;
-			imprimirPocima(this.pocima.getNombre(), valorJ1masPocima);
-			this.borrarPocima();
-		}
-		System.out.println();
-		double valorJ2 = cartaJ2.getValorAtributoPorNombre(nombreAtributo);
-		imprimirValoresCarta(valorJ2, cartaJ2.getNombrePersonaje(), nombreAtributo, j2);
-		if(cartaJ2.tienePocima()) {
-			double valorJ2masPocima = cartaJ2.aplicarPocima(valorJ2, nombreAtributo);
-			valorJ2 = valorJ2masPocima;
-			imprimirPocima(cartaJ2.pocima.getNombre(), valorJ2masPocima);
-			cartaJ2.borrarPocima();
-		}
-		System.out.println();
-		return compararValores(valorJ1, valorJ2, cartaJ2);
-	}
-	
 	public Carta compararValores(double valorJ1, double valorJ2, Carta cartaJ2) {
 		if (valorJ1 > valorJ2)
 			return this;
@@ -52,8 +52,8 @@ public class Carta {
 			return cartaJ2;
 		else return null;
 	}
-	//----------------------------------
-	
+
+
 	public boolean esDelMismoTipo(Carta unaCarta) { 	
 		ArrayList<String> listaUno = new ArrayList<String>();
 		ArrayList<String> listaDos = new ArrayList<String>();
@@ -102,9 +102,6 @@ public class Carta {
 		}
 	}
 
-	public ArrayList<Atributo> getAtributos() {
-		return new ArrayList<Atributo> (this.atributos);
-	}
 
 	//------------- NUEVOS -----------------
 	public Atributo getAtributoMaxValor() {
@@ -131,17 +128,9 @@ public class Carta {
 		double valorAtributoConPocima = pocima.modificarValor(atributo);
 		return valorAtributoConPocima;
 	}
-	
-	public String getDatosPocima(String nombreAtributo) {
-		Pocima p = this.getPocima();
-		String nombrePocima = p.getNombre();
-		double valorAtributoJpri = this.getValorAtributoPorNombre(nombreAtributo);
-		double valorAPocima = this.aplicarPocima(valorAtributoJpri, nombreAtributo);
-		return devolverDatosPocima(nombrePocima, valorAPocima);
-	}
-	
-	public String devolverDatosPocima(String nombrePocima, double valorAPocima) {
-		return "Se aplicó la pocima " + nombrePocima.toUpperCase() + ". Valor resultante: " + valorAPocima;
+
+	public void imprimirSalto() {
+		System.out.println();
 	}
 	
 	//GETS AND SETS
@@ -149,9 +138,6 @@ public class Carta {
 		return nombrePersonaje;
 	}
 
-	public Pocima getPocima() {
-		return pocima;
-	}
 
 	public void setPocima(Pocima pocima) {
 		this.pocima = pocima;
@@ -164,4 +150,6 @@ public class Carta {
 	public void borrarPocima() {
 		this.pocima = null;
 	}
+
+
 }

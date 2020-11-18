@@ -1,4 +1,3 @@
-
 public class Atributo {
 	private String nombre;
 	private double valor;
@@ -8,10 +7,10 @@ public class Atributo {
 		this.valor = valor;
 	}
 	
-	public boolean equals(Object o) { //EQUALS ATRIBUTO
+	public boolean equals(Object o) {
 		try {
 			Atributo unAtributo = (Atributo) o;
-			if(unAtributo.getNombre() == this.nombre)
+			if (unAtributo.getNombre().equals(this.nombre))
 				return true;
 			else
 				return false;
@@ -22,7 +21,7 @@ public class Atributo {
 	}
 
 	public String toString() {
-		return this.getNombre() + ": " + this.getValor()+" ";
+		return this.getNombre() + ": " + this.getValor() + " ";
 	}
 	
 	//SETS AND GETS
@@ -33,5 +32,5 @@ public class Atributo {
 	public double getValor() {
 		return valor;
 	}
-	
+
 }
