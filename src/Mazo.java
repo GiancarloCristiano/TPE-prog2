@@ -17,7 +17,7 @@ public class Mazo {
 		cartas = new ArrayList<Carta>();
 	}
 	
-    public void cargarMazo(String jsonFile) {  //preguntar en qu� afecta que sea o no static �sta funcion
+    public void cargarMazo(String jsonFile) {
         //URL url = getClass().getResource(jsonFile);
         File jsonInputFile = new File(jsonFile);
         InputStream is;
@@ -39,18 +39,17 @@ public class Mazo {
                 	//atributosStr = atributosStr + nombreAtributo + ": " +
                             //atributos.getInt(nombreAtributo) + "; ";
                 }
-                //if(carta.esDelMismoTipo(cartaAux))
-                	this.addCarta(unaCarta);
+                this.addCarta(unaCarta);
                 //System.out.println(nombreCarta+"\t\t\t"+atributosStr);
             }
             reader.close();
-            this.chequearMazo();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
-	
+
+	}
+	/*
 	public void chequearMazo() {
 		for(int i = 0; i < getTamanioMazo(); i++) {
 			Carta carta = cartas.get(0);
@@ -58,11 +57,14 @@ public class Mazo {
 			if(!carta.esDelMismoTipo(cartaAux))
 				cartas.remove(i);
 		}
-	}
+	}*/
 
 	public void addCarta(Carta unaCarta) {
-		if(cartas.size() < 1 || !cartas.contains(unaCarta))
-			cartas.add(unaCarta);
+		Carta c = this.elegirPrimerCarta();
+		if (cartas.size() < 1 || c.esDelMismoTipo(unaCarta)) {
+			if (!cartas.contains(unaCarta))
+				cartas.add(unaCarta);
+		}
 	}
 
 	/*public void addCarta(Carta unaCarta) {
@@ -91,11 +93,15 @@ public class Mazo {
 	
 	protected void darCartas(Jugador jugador1, Jugador jugador2) {
 		mezclarCartas();
-		for(int i = 0; i < cartas.size()-1; i++) {
+		int i = 0;
+		while (cartas.size() != 0) {
+			//for(int i = 0; i < cartas.size()-1; i++) {
 			jugador1.recibirCarta(cartas.get(i));
-			cartas.remove(i); 
-			jugador2.recibirCarta(cartas.get(i));
 			cartas.remove(i);
+			if (!cartas.isEmpty()){
+				jugador2.recibirCarta(cartas.get(i));
+				cartas.remove(i);
+			}
 		}
 	}
 	
@@ -113,11 +119,9 @@ public class Mazo {
 	}
 	
 	public Carta elegirPrimerCarta() {
-		if (cartas.size() > 0) {
+		if (cartas.size() > 0)
 			return cartas.get(0);
-		} else {
-			return null;
-		}
+		else return null;
 	}
 	
 	public void enviarCartaAlFondo() {

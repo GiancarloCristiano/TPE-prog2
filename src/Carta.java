@@ -60,9 +60,12 @@ public class Carta {
 		listaUno = unaCarta.getNombreAtributos();
 		listaDos = this.getNombreAtributos();
 		for(int i = 0; i < listaUno.size(); i++) {
-			if (!listaDos.contains(listaUno.get(i)))
-				return false;									
+			if (!listaDos.contains(listaUno.get(i))) {
+				//System.out.println("descartado " + unaCarta.getNombrePersonaje());
+				return false;
+			}
 		}
+		//System.out.println("agregado " + unaCarta.getNombrePersonaje());
 		return true;	
 	}
 	
