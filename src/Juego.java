@@ -74,14 +74,18 @@ public class Juego {
 
 	//----------------------------- POCIMAS --------------------------------------------
 	private void repartirPocimas() {
+		int i = 0;
 		while (this.getCantPocimas() != 0){
-			int i = 0;
 			jugador1.addPocimaAcarta(this.pocimas.get(i));
 			pocimas.remove(i);
-			jugador2.addPocimaAcarta(this.pocimas.get(i));
-			pocimas.remove(i);
+			if (!pocimas.isEmpty()) {
+				jugador2.addPocimaAcarta(this.pocimas.get(i));
+				pocimas.remove(i);
+			}
 		}
 	}
+
+
 
 	private void mezclarPocimas() {
 		Collections.shuffle(this.pocimas);

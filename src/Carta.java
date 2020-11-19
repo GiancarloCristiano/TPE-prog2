@@ -61,12 +61,10 @@ public class Carta {
 		listaDos = this.getNombreAtributos();
 		for(int i = 0; i < listaUno.size(); i++) {
 			if (!listaDos.contains(listaUno.get(i))) {
-				//System.out.println("descartado " + unaCarta.getNombrePersonaje());
 				return false;
 			}
 		}
-		//System.out.println("agregado " + unaCarta.getNombrePersonaje());
-		return true;	
+		return true;
 	}
 	
 	public double getValorAtributoPorNombre(String atributo) {

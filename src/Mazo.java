@@ -95,7 +95,6 @@ public class Mazo {
 		mezclarCartas();
 		int i = 0;
 		while (cartas.size() != 0) {
-			//for(int i = 0; i < cartas.size()-1; i++) {
 			jugador1.recibirCarta(cartas.get(i));
 			cartas.remove(i);
 			if (!cartas.isEmpty()){
@@ -141,6 +140,7 @@ public class Mazo {
 	}
 	
 	public void addPocimaAcarta(Pocima pocima) {
+		System.out.println(cartas.size());
 		int i = (int) Math.floor(Math.random() * cartas.size());
 		Carta cartaAux = cartas.get(i);
 		cartaAux.setPocima(pocima);
@@ -148,7 +148,6 @@ public class Mazo {
 	
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		if (this.elegirPrimerCarta().equals(ganadora))
-			//		if(cartas.contains(ganadora))
 			return true;
 		else
 			return false;
