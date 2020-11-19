@@ -12,9 +12,11 @@ import javax.json.JsonReader;
 
 public class Mazo {
 	protected ArrayList<Carta> cartas;
+	private ArrayList<Integer> randoms;
 	
 	public Mazo() {
 		cartas = new ArrayList<Carta>();
+		randoms = new ArrayList<Integer>();
 	}
 	
     public void cargarMazo(String jsonFile) {
@@ -109,8 +111,6 @@ public class Mazo {
 	}
 
 
-	
-
 	public void eliminarCarta() {
 		if (cartas.size() > 0) {
 			cartas.remove(0);
@@ -140,11 +140,25 @@ public class Mazo {
 	}
 	
 	public void addPocimaAcarta(Pocima pocima) {
-		System.out.println(cartas.size());
-		int i = (int) Math.floor(Math.random() * cartas.size());
+		boolean agregada = false;
+		while (!agregada) {
+			int i = (int) (Math.random() * cartas.size());
+			if (!randoms.contains(i)){
+				randoms.add(i);
+				Carta cartaAux = cartas.get(i);
+				cartaAux.setPocima(pocima);
+				agregada = true;
+			}
+		}
+	}
+
+	/*
+	public void addPocimaAcarta(Pocima pocima) {
+		int i = (int) (Math.random() * cartas.size());
 		Carta cartaAux = cartas.get(i);
 		cartaAux.setPocima(pocima);
-	}
+	}*/
+
 	
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		if (this.elegirPrimerCarta().equals(ganadora))
