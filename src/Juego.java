@@ -85,8 +85,6 @@ public class Juego {
 		}
 	}
 
-
-
 	private void mezclarPocimas() {
 		Collections.shuffle(this.pocimas);
 	}
@@ -110,8 +108,8 @@ public class Juego {
 	}
 
 	private void imprimirGanadorJuego(Jugador jugador) {
-		if(jugador!= null)
-			System.out.println("GANÓ EL JUEGO " + jugador.getNombre().toUpperCase() +" :D" );
+		if(jugador != null)
+			System.out.println("GANÓ EL JUEGO " + jugador.getNombre().toUpperCase() + " :D" );
 		else
 			System.out.println("EL JUEGO TERMINÓ EMPATADO.");
 	}

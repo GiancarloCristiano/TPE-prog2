@@ -53,8 +53,8 @@ public class Jugador implements Estrategia{
 	}
 
 	private void imprimirCantidadCartas(Jugador ganador, Jugador perdedor) {
-		System.out.println("Gana la ronda " + ganador.getNombre().toUpperCase() + " y queda con " + ganador.cantidadCartas()+" cartas ("
-				+ perdedor.getNombre().toUpperCase() + " posee ahora " + perdedor.cantidadCartas() + " cartas).\n");
+		System.out.println("Gana la ronda " + ganador.getNombre().toUpperCase() + " y queda con " + ganador.cantidadCartas()
+		+ " cartas ("+ perdedor.getNombre().toUpperCase() + " posee ahora " + perdedor.cantidadCartas() + " cartas).\n");
 	}
 
 
@@ -103,7 +103,7 @@ public class Jugador implements Estrategia{
 	}
 
 	public void imprimirEmpate(){
-		System.out.println("La ronda resultó en EMPATE.\n");
+		System.out.println("Esta ronda resulta en EMPATE.\n");
 	}
 
 	//GET AND SET

@@ -5,4 +5,5 @@ public class Obstinado implements Estrategia{
 		Atributo loQueDevuelvo = carta.getAtributoObstinado();
 		return loQueDevuelvo;
 	}
+
 }

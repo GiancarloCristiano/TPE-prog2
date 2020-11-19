@@ -12,18 +12,15 @@ import javax.json.JsonReader;
 
 public class Mazo {
 	protected ArrayList<Carta> cartas;
-	//private ArrayList<Integer> randoms;
-	
+
 	public Mazo() {
 		cartas = new ArrayList<Carta>();
-		//randoms = new ArrayList<Integer>();
 	}
 	
     public void cargarMazo(String jsonFile) {
         //URL url = getClass().getResource(jsonFile);
         File jsonInputFile = new File(jsonFile);
         InputStream is;
-        //Mazo mazo = new Mazo(); 
         try {
             is = new FileInputStream(jsonInputFile);
             // Creo el objeto JsonReader de Json.
@@ -51,44 +48,15 @@ public class Mazo {
         }
 
 	}
-	/*
-	public void chequearMazo() {
-		for(int i = 0; i < getTamanioMazo(); i++) {
-			Carta carta = cartas.get(0);
-			Carta cartaAux = cartas.get(i);
-			if(!carta.esDelMismoTipo(cartaAux))
-				cartas.remove(i);
-		}
-	}*/
 
 	public void addCarta(Carta unaCarta) {
 		Carta c = this.elegirPrimerCarta();
-		if (cartas.size() < 1 || c.esDelMismoTipo(unaCarta)) {
-			if (!cartas.contains(unaCarta))
-				cartas.add(unaCarta);
-		}
+		if ((cartas.size() < 1 || c.esDelMismoTipo(unaCarta))
+				&& !cartas.contains(unaCarta))
+			cartas.add(unaCarta);
 	}
 
-	/*public void addCarta(Carta unaCarta) {
-		if(cartas.size() < 1 || !cartas.contains(unaCarta))
-			cartas.add(unaCarta);
-	}*/
-	
-	public void mostrarMazo() {
-		for(int i = 0; i < getTamanioMazo(); i++) {
-			Carta cartaAux = cartas.get(i);
-			System.out.println(cartaAux.toString());
-		}
-	}
-	
-	public String toString(Carta carta){
-        return carta.toString();
-    }
-	
-	public ArrayList<Carta> getMazo(){
-		return new ArrayList<Carta>(this.cartas);
-	}
-	
+
 	private void mezclarCartas() {
 		Collections.shuffle(cartas);
 	}
@@ -105,11 +73,26 @@ public class Mazo {
 			}
 		}
 	}
-	
+
+	/*
 	public int getTamanioMazo() {
 		return cartas.size();
 	}
 
+	public void mostrarMazo() {
+		for(int i = 0; i < getTamanioMazo(); i++) {
+			Carta cartaAux = cartas.get(i);
+			System.out.println(cartaAux.toString());
+		}
+	}
+
+	public String toString(Carta carta){
+		return carta.toString();
+	}
+
+	public ArrayList<Carta> getMazo(){
+		return new ArrayList<Carta>(this.cartas);
+	}*/
 
 	public void eliminarCarta() {
 		if (cartas.size() > 0) {

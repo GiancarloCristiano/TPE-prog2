@@ -123,8 +123,8 @@ public class Carta {
 	}
 	
 
-	public double aplicarPocima(double valorAtributoJpri, String nombreAtributo) {
-		Atributo atributo = new Atributo(nombreAtributo, valorAtributoJpri);
+	public double aplicarPocima(double valorAtributo, String nombreAtributo) {
+		Atributo atributo = new Atributo(nombreAtributo, valorAtributo);
 		double valorAtributoConPocima = pocima.modificarValor(atributo);
 		return valorAtributoConPocima;
 	}
