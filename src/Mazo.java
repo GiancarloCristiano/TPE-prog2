@@ -12,11 +12,11 @@ import javax.json.JsonReader;
 
 public class Mazo {
 	protected ArrayList<Carta> cartas;
-	private ArrayList<Integer> randoms;
+	//private ArrayList<Integer> randoms;
 	
 	public Mazo() {
 		cartas = new ArrayList<Carta>();
-		randoms = new ArrayList<Integer>();
+		//randoms = new ArrayList<Integer>();
 	}
 	
     public void cargarMazo(String jsonFile) {
@@ -138,7 +138,30 @@ public class Mazo {
 		eliminarCarta();
 		return c;
 	}
-	
+
+	/* ESTE HACE QUE SI ESA CARTA TENIA POCIMA, PIERDA LA QUE LE QUIERO ADD.
+	public void addPocimaAcarta(Pocima pocima) {
+		int i = (int) (Math.random() * cartas.size());
+		Carta cartaAux = cartas.get(i);
+		if (!cartaAux.tienePocima()){
+			cartaAux.setPocima(pocima);
+			}
+		}
+	*/
+
+	public void addPocimaAcarta(Pocima pocima) {
+		boolean fin = false;
+		while (!fin) {
+			int i = (int) (Math.random() * cartas.size());
+			Carta cartaAux = cartas.get(i);
+			if (!cartaAux.tienePocima()){
+				cartaAux.setPocima(pocima);
+				fin = true;
+			}
+		}
+	}
+
+	/*ESTO ANDA PERO TUVE QUE CREAR UNA LISTA AL PEDO
 	public void addPocimaAcarta(Pocima pocima) {
 		boolean agregada = false;
 		while (!agregada) {
@@ -150,9 +173,10 @@ public class Mazo {
 				agregada = true;
 			}
 		}
-	}
+	}*/
 
-	/*
+
+	/*ESTE ERA EL VIEJO QUE SE PERDIAN EN PROMEDIO 2,5 POCIMAS X JUEGO.
 	public void addPocimaAcarta(Pocima pocima) {
 		int i = (int) (Math.random() * cartas.size());
 		Carta cartaAux = cartas.get(i);
