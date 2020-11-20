@@ -23,7 +23,8 @@ public class Juego {
 	}
 	
 	// INICIA JUEGO
-	public void repartirCartas(){ 	
+	public void repartirCartas(){
+		mazo.mezclarCartas();
 		mazo.darCartas(jugador1, jugador2);
 		if(seJuegaConPocimas()) {
 			mezclarPocimas();

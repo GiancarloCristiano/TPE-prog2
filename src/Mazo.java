@@ -47,12 +47,20 @@ public class Mazo {
 			cartas.add(unaCarta);
 	}
 
-	private void mezclarCartas() {
+	public void mezclarCartas() {
 		Collections.shuffle(cartas);
 	}
-	
+
+	/*
 	protected void darCartas(Jugador jugador1, Jugador jugador2) {
-		mezclarCartas();
+		while (cartas.size() != 0) {
+			jugador1.recibirCarta(this.darCarta());
+			if (!cartas.isEmpty())
+				jugador2.recibirCarta(this.darCarta());
+		}
+	}*/
+
+	protected void darCartas(Jugador jugador1, Jugador jugador2) {
 		int i = 0;
 		while (cartas.size() != 0) {
 			jugador1.recibirCarta(cartas.get(i));
@@ -63,6 +71,8 @@ public class Mazo {
 			}
 		}
 	}
+
+
 
 	public void eliminarCarta() {
 		if (cartas.size() > 0) {

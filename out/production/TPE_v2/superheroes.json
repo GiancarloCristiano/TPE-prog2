@@ -1,432 +1,216 @@
 {
   "cartas": [
     {
-      "nombre": "Superman",
+      "nombre": "Peugeot 404",
       "atributos": {
-        "altura": 205,
-        "peso": 110,
-        "fuerza": 2000,
-        "peleas ganadas": 990,
-        "velocidad": 400
+        "Km/h": 125,
+        "HP": 60,
+        "Cilindros": 4,
+        "RPM": 4500,
+        "Aceleracion 0-100": 23,
+		"cm3": 1748
       }
     },
     {
-      "nombre": "Linterna Verde",
-      "atributos": {
-        "altura": 186,
-        "peso": 90,
-        "fuerza": 710,
-        "peleas ganadas": 845,
-        "velocidad": 220
+      "nombre": "Fiat Super Europa",
+      "atributos": {        
+        "HP": 60,        
+        "RPM": 6000,
+        "Aceleracion 0-100": 15,
+		"Cilindros": 4,
+		"cm3": 1290,
+		"Km/h": 142
       }
     },
-    {
-      "nombre": "Mantis",
+	{
+      "nombre": "Renault 18 TX",
       "atributos": {
-      "altura": 165,
-      "peso": 80,
-      "fuerza": 110,
-      "peleas ganadas": 7,
-      "velocidad": 99
+        "Km/h": 170,
+        "HP": 99,
+        "Cilindros": 4,
+        "RPM": 5700,
+        "Aceleracion 0-100": 12,
+		"cm3": 1995
       }
     },
-    {
-      "nombre": "Flecha Verde",
+	{
+      "nombre": "Peugeot 504 GR",
       "atributos": {
-        "altura": 196,
-        "peso": 99,
-        "fuerza": 830,
-        "peleas ganadas": 910,
-        "velocidad": 340
+        "Cilindros": 4,
+		"Km/h": 157,
+        "HP": 110,        
+        "RPM": 5600,
+        "Aceleracion 0-100": 14,
+		"cm3": 1971
       }
     },
-    {
-      "nombre": "Helicoptero",
+	{
+      "nombre": "VW Gacel",
       "atributos": {
-        "envergadura": 196,
-        "peso": 99,
-        "capacidad": 830,
-        "velocidad": 340
+        "Km/h": 153,
+        "HP": 88,
+        "Cilindros": 4,
+        "RPM": 5800,
+        "Aceleracion 0-100": 14,
+		"cm3": 1588
       }
     },
-    {
-      "nombre": "Doctor Fate",
+	{
+      "nombre": "Renault 6 GTL",
       "atributos": {
-        "altura": 200,
-        "peso": 100,
-        "fuerza": 900,
-        "peleas ganadas": 805,
-        "velocidad": 100
+        "Km/h": 127,
+        "HP": 60,
+        "Cilindros": 4,
+        "RPM": 4500,
+        "Aceleracion 0-100": 22,
+		"cm3": 1397
       }
     },
-    {
-      "nombre": "Shazam",
+	{
+      "nombre": "Renault 12 TS",
       "atributos": {
-        "altura": 192,
-        "peso": 95,
-        "fuerza": 1000,
-        "peleas ganadas": 930,
-        "velocidad": 300
+        "Km/h": 149,
+        "HP": 90,
+        "Cilindros": 4,
+        "RPM": 5500,
+        "Aceleracion 0-100": 15,
+		"cm3": 1397
       }
     },
-    {
-      "nombre": "Flash",
+	{
+      "nombre": "VW 1.8",
       "atributos": {
-        "altura": 196,
-        "peso": 90,
-        "fuerza": 840,
-        "peleas ganadas": 900,
-        "velocidad": 800000
+        "Km/h": 152,
+        "HP": 76,
+        "Cilindros": 4,
+        "RPM": 5000,
+        "Aceleracion 0-100": 15,
+		"cm3": 1798
       }
     },
-    {
-      "nombre": "Darkseid",
+	{
+      "nombre": "Taunus Ghia",
       "atributos": {
-        "altura": 210,
-        "peso": 130,
-        "fuerza": 1900,
-        "peleas ganadas": 95,
-        "velocidad": 110
+        "Km/h": 165,
+        "HP": 114,
+        "Cilindros": 4,
+        "RPM": 5500,
+        "Aceleracion 0-100": 14,
+		"cm3": 2298
       }
     },
-    {
-      "nombre": "Cyborg",
+	{
+      "nombre": "Torino",
       "atributos": {
-        "altura": 200,
-        "peso": 110,
-        "fuerza": 1100,
-        "peleas ganadas": 805,
-        "velocidad": 150
+        "Km/h": 200,
+        "HP": 158,
+        "Cilindros": 6,
+        "RPM": 5000,
+        "Aceleracion 0-100": 10,
+		"cm3": 3770
       }
     },
-    {
-      "nombre": "Batman",
+	{
+      "nombre": "Tomate",
       "atributos": {
-        "altura": 203,
-        "peso": 106,
-        "fuerza": 500,
-        "peleas ganadas": 966,
-        "velocidad": 85
+        "calorias": 18,
+        "Grasas totales": 1,
+        "Colesterol": 0,
+        "Sodio": 5,
+        "Potasio": 237,
+		"carbohidratos": 4,
+		"Proteinas": 1,
+		"Vitamina A": 833,
+		"Calcio": 10
       }
     },
-    {
-      "nombre": "Lex Luthor",
+	{
+      "nombre": "Falcon 3.6",
       "atributos": {
-        "altura": 180,
-        "peso": 79,
-        "fuerza": 415,
-        "peleas ganadas": 6,
-        "velocidad": 85
+        "Km/h": 160,
+        "HP": 132,
+        "Cilindros": 6,
+        "RPM": 4000,
+        "Aceleracion 0-100": 18,
+		"cm3": 3620
       }
     },
-    {
-      "nombre": "Faraón dorado",
+	{
+      "nombre": "Fairline",
       "atributos": {
-        "altura": 189,
-        "peso": 88,
-        "fuerza": 690,
-        "peleas ganadas": 600,
-        "velocidad": 89
+        "Km/h": 170,
+		"Aceleracion 0-100": 16,
+        "HP": 143,
+        "Cilindros": 6,
+        "RPM": 4500,
+		"cm3": 4785
       }
     },
-    {
-      "nombre": "Robin",
+	{
+      "nombre": "Falcon Rural",
       "atributos": {
-        "altura": 178,
-        "peso": 65,
-        "fuerza": 200,
-        "peleas ganadas": 816,
-        "velocidad": 80
+        "Km/h": 150,
+        "HP": 84,
+        "Cilindros": 6,
+        "RPM": 4000,
+        "Aceleracion 0-100": 18,
+		"cm3": 3620
       }
     },
-    {
-      "nombre": "Brainiac",
+	{
+      "nombre": "Falcon Rural XLS",
       "atributos": {
-        "altura": 180,
-        "peso": 200,
-        "fuerza": 805,
-        "peleas ganadas": 7,
-        "velocidad": 76
+        "Km/h": 150,
+        "HP": 84,
+        "Cilindros": 6,
+        "RPM": 4000,
+        "Aceleracion 0-100": 18,
+		"cm3": 3620,
+		"peso": 1000
       }
     },
-    {
-      "nombre": "Cyclotron",
+	{
+      "nombre": "Fiat 600",
       "atributos": {
-        "altura": 189,
-        "peso": 102,
-        "fuerza": 850,
-        "peleas ganadas": 780,
-        "velocidad": 170
+        "Km/h": 110,
+        "HP": 40,
+        "Cilindros": 4,
+        "RPM": 5600,
+        "Aceleracion 0-100": 22,
+		"cm3": 903
       }
     },
-    {
-      "nombre": "Hombre Halcón",
+	{
+      "nombre": "I.E.S. 3 CV",
       "atributos": {
-        "altura": 196,
-        "peso": 95,
-        "fuerza": 835,
-        "peleas ganadas": 837,
-        "velocidad": 300
+        "Km/h": 113,
+        "HP": 31,
+        "Cilindros": 2,
+        "RPM": 6700,
+        "Aceleracion 0-100": 45,
+		"cm3": 602
       }
     },
-    {
-      "nombre": "Guasón",
+	{
+      "nombre": "Fiat 147",
       "atributos": {
-        "altura": 170,
-        "peso": 67,
-        "fuerza": 45,
-        "peleas ganadas": 5,
-        "velocidad": 45
+        "Km/h": 140,
+        "HP": 52,
+        "Cilindros": 4,
+        "RPM": 5600,
+        "Aceleracion 0-100": 14,
+		"cm3": 1048
       }
     },
-    {
-      "nombre": "Orion",
+	{
+      "nombre": "Renault 4",
       "atributos": {
-        "altura": 192,
-        "peso": 91,
-        "fuerza": 1300,
-        "peleas ganadas": 881,
-        "velocidad": 89
-      }
-    },
-    {
-      "nombre": "Acuaman",
-      "atributos": {
-        "altura": 185,
-        "peso": 86,
-        "fuerza": 700,
-        "peleas ganadas": 910,
-        "velocidad": 220
-      }
-    },
-    {
-      "nombre": "Pigüino",
-      "atributos": {
-        "altura": 160,
-        "peso": 90,
-        "fuerza": 30,
-        "peleas ganadas": 7,
-        "velocidad": 15
-      }
-    },
-    {
-      "nombre": "Samurai",
-      "atributos": {
-        "altura": 187,
-        "peso": 89,
-        "fuerza": 1450,
-        "peleas ganadas": 872,
-        "velocidad": 300
-      }
-    },
-    {
-      "nombre": "Mujer Maravilla",
-      "atributos": {
-        "altura": 178,
-        "peso": 62,
-        "fuerza": 830,
-        "peleas ganadas": 906,
-        "velocidad": 70
-      }
-    },
-    {
-      "nombre": "Steppnwolf",
-      "atributos": {
-        "altura": 182,
-        "peso": 89,
-        "fuerza": 2000,
-        "peleas ganadas": 15,
-        "velocidad": 400
-      }
-    },
-    {
-      "nombre": "Sr. Milagro",
-      "atributos": {
-        "altura": 182,
-        "peso": 98,
-        "fuerza": 1600,
-        "peleas ganadas": 670,
-        "velocidad": 289
-      }
-    },
-    {
-      "nombre": "Tornado Rojo",
-      "atributos": {
-        "altura": 182,
-        "peso": 86,
-        "fuerza": 650,
-        "peleas ganadas": 730,
-        "velocidad": 320
-      }
-    },
-    {
-      "nombre": "Kalibak",
-      "atributos": {
-        "altura": 175,
-        "peso": 99,
-        "fuerza": 93,
-        "peleas ganadas": 7,
-        "velocidad": 37
-      }
-    },
-    {
-      "nombre": "Hombre de goma",
-      "atributos": {
-        "altura": 300,
-        "peso": 81,
-        "fuerza": 600,
-        "peleas ganadas": 579,
-        "velocidad": 179
-      }
-    },
-    {
-      "nombre": "Manhunter",
-      "atributos": {
-        "altura": 189,
-        "peso": 99,
-        "fuerza": 890,
-        "peleas ganadas": 750,
-        "velocidad": 300
-      }
-    },
-    {
-      "nombre": "Paradeamon",
-      "atributos": {
-        "altura": 165,
-        "peso": 85,
-        "fuerza": 70,
-        "peleas ganadas": 9,
-        "velocidad": 180
-      }
-    },
-    {
-      "nombre": "Mr. Freeze",
-      "atributos": {
-        "altura": 189,
-        "peso": 110,
-        "fuerza": 350,
-        "peleas ganadas": 5,
-        "velocidad": 13
-      }
-    },
-    {
-      "nombre": "Firestorm",
-      "atributos": {
-        "altura": 176,
-        "peso": 70,
-        "fuerza": 700,
-        "peleas ganadas": 815,
-        "velocidad": 220
-      }
-    },
-    {
-      "nombre": "Desaad",
-      "atributos": {
-        "altura": 155,
-        "peso": 90,
-        "fuerza": 50,
-        "peleas ganadas": 5,
-        "velocidad": 14
-      }
-    },
-    {
-      "nombre": "Tyr",
-      "atributos": {
-        "altura": 179,
-        "peso": 90,
-        "fuerza": 1500,
-        "peleas ganadas": 4,
-        "velocidad": 76
-      }
-    },
-    {
-      "nombre": "Mujer Verde",
-      "atributos": {
-        "altura": 190,
-        "peso": 85,
-        "fuerza": 1500,
-        "peleas ganadas": 815,
-        "velocidad": 85
-      }
-    },
-    {
-      "nombre": "Dazzler",
-      "atributos": {
-        "altura": 172,
-        "peso": 50,
-        "fuerza": 130,
-        "peleas ganadas": 856,
-        "velocidad": 70
-      }
-    },
-    {
-      "nombre": "Chica Maravillosa",
-      "atributos": {
-        "altura": 170,
-        "peso": 48,
-        "fuerza": 800,
-        "peleas ganadas": 815,
-        "velocidad": 130
-      }
-    },
-    {
-      "nombre": "Mujer araña",
-      "atributos": {
-        "altura": 176,
-        "peso": 56,
-        "fuerza": 315,
-        "peleas ganadas": 836,
-        "velocidad": 105
-      }
-    },
-    {
-      "nombre": "Mujer Invisible",
-      "atributos": {
-        "altura": 187,
-        "peso": 54,
-        "fuerza": 106,
-        "peleas ganadas": 873,
-        "velocidad": 70
-      }
-    },
-    {
-      "nombre": "Tormenta",
-      "atributos": {
-        "altura": 155,
-        "peso": 63,
-        "fuerza": 320,
-        "peleas ganadas": 816,
-        "velocidad": 166
-      }
-    },
-    {
-      "nombre": "Tigra",
-      "atributos": {
-        "altura": 160,
-        "peso": 60,
-        "fuerza": 930,
-        "peleas ganadas": 906,
-        "velocidad": 160
-      }
-    },
-    {
-      "nombre": "Hombre de hielo",
-      "atributos": {
-        "altura": 177,
-        "peso": 85,
-        "fuerza": 800,
-        "peleas ganadas": 936,
-        "velocidad": 100
-      }
-    },
-    {
-      "nombre": "Hulk",
-      "atributos": {
-        "altura": 240,
-        "peso": 450,
-        "fuerza": 2500,
-        "peleas ganadas": 997,
-        "velocidad": 130
+        "Km/h": 120,
+        "HP": 34,
+        "Cilindros": 4,
+        "RPM": 5500,
+        "Aceleracion 0-100": 19,
+		"cm3": 1020
       }
     }
 	
