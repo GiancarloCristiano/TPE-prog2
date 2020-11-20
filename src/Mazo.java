@@ -18,35 +18,26 @@ public class Mazo {
 	}
 	
     public void cargarMazo(String jsonFile) {
-        //URL url = getClass().getResource(jsonFile);
         File jsonInputFile = new File(jsonFile);
         InputStream is;
         try {
             is = new FileInputStream(jsonInputFile);
-            // Creo el objeto JsonReader de Json.
             JsonReader reader = Json.createReader(is);
-            // Obtenemos el JsonObject a partir del JsonReader.
             JsonArray cartas = (JsonArray) reader.readObject().getJsonArray("cartas");
             for (JsonObject cartaJson : cartas.getValuesAs(JsonObject.class)) {
                 String nombreCarta = cartaJson.getString("nombre");
                 Carta unaCarta = new Carta(nombreCarta);
                 JsonObject atributos = (JsonObject) cartaJson.getJsonObject("atributos");
-                //String atributosStr = "";
                 for (String nombreAtributo:atributos.keySet()) {
                 	Atributo unAtributo = new Atributo(nombreAtributo, atributos.getInt(nombreAtributo));
                     unaCarta.addAtributo(unAtributo);
-                	//atributosStr = atributosStr + nombreAtributo + ": " +
-                            //atributos.getInt(nombreAtributo) + "; ";
                 }
                 this.addCarta(unaCarta);
-                //System.out.println(nombreCarta+"\t\t\t"+atributosStr);
             }
             reader.close();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
 	}
 
 	public void addCarta(Carta unaCarta) {
@@ -55,7 +46,6 @@ public class Mazo {
 				&& !cartas.contains(unaCarta))
 			cartas.add(unaCarta);
 	}
-
 
 	private void mezclarCartas() {
 		Collections.shuffle(cartas);
@@ -73,26 +63,6 @@ public class Mazo {
 			}
 		}
 	}
-
-	/*
-	public int getTamanioMazo() {
-		return cartas.size();
-	}
-
-	public void mostrarMazo() {
-		for(int i = 0; i < getTamanioMazo(); i++) {
-			Carta cartaAux = cartas.get(i);
-			System.out.println(cartaAux.toString());
-		}
-	}
-
-	public String toString(Carta carta){
-		return carta.toString();
-	}
-
-	public ArrayList<Carta> getMazo(){
-		return new ArrayList<Carta>(this.cartas);
-	}*/
 
 	public void eliminarCarta() {
 		if (cartas.size() > 0) {
@@ -122,16 +92,7 @@ public class Mazo {
 		return c;
 	}
 
-	/* ESTE HACE QUE SI ESA CARTA TENIA POCIMA, PIERDA LA QUE LE QUIERO ADD.
-	public void addPocimaAcarta(Pocima pocima) {
-		int i = (int) (Math.random() * cartas.size());
-		Carta cartaAux = cartas.get(i);
-		if (!cartaAux.tienePocima()){
-			cartaAux.setPocima(pocima);
-			}
-		}
-	*/
-
+	//Despues de mezclarlas Las repartimos al azar. Controlamos que esa carta no tenga pócima para no que se pierda ninguna de estas
 	public void addPocimaAcarta(Pocima pocima) {
 		boolean fin = false;
 		while (!fin) {
@@ -144,29 +105,6 @@ public class Mazo {
 		}
 	}
 
-	/*ESTO ANDA PERO TUVE QUE CREAR UNA LISTA AL PEDO
-	public void addPocimaAcarta(Pocima pocima) {
-		boolean agregada = false;
-		while (!agregada) {
-			int i = (int) (Math.random() * cartas.size());
-			if (!randoms.contains(i)){
-				randoms.add(i);
-				Carta cartaAux = cartas.get(i);
-				cartaAux.setPocima(pocima);
-				agregada = true;
-			}
-		}
-	}*/
-
-
-	/*ESTE ERA EL VIEJO QUE SE PERDIAN EN PROMEDIO 2,5 POCIMAS X JUEGO.
-	public void addPocimaAcarta(Pocima pocima) {
-		int i = (int) (Math.random() * cartas.size());
-		Carta cartaAux = cartas.get(i);
-		cartaAux.setPocima(pocima);
-	}*/
-
-	
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		if (this.elegirPrimerCarta().equals(ganadora))
 			return true;

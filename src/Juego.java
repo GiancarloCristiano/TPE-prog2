@@ -31,7 +31,7 @@ public class Juego {
 		}
 	}
 
-	//COMPARAR
+	//JUGAR
 	public void jugar() {
 		while(!juegoTerminado()) {
 			nroRonda ++;

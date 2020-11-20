@@ -103,7 +103,7 @@ public class Jugador implements Estrategia{
 	}
 
 	public void imprimirEmpate(){
-		System.out.println("Esta ronda resulta en EMPATE.\n");
+		System.out.println("Esta ronda termina EMPATADA.\n");
 	}
 
 	//GET AND SET

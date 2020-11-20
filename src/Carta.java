@@ -114,7 +114,7 @@ public class Carta {
 	}
 	
 	public Atributo getAtributoRandom() {
-		int i = (int) Math.floor(Math.random() * atributos.size());
+		int i = (int) (Math.random() * atributos.size());
 		return this.atributos.get(i);
 	}
 		
