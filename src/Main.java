@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        //String mazoPath = "./src/superheroes.json";
-        String mazoPath = "./src/autos.json";
+        String mazoPath = "./src/superheroes.json";
+        //String mazoPath = "./src/autos.json";
         Mazo mazo = new Mazo();
         mazo.cargarMazo(mazoPath);
         Jugador octi = new Jugador("Octi");

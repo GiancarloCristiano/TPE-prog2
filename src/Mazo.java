@@ -12,8 +12,6 @@ import javax.json.JsonReader;
 
 public class Mazo {
 	protected ArrayList<Carta> cartas;
-	private int cantCartasConPocima = 0;
-	private int cantMazoOrig = 0;
 
 	public Mazo() {
 		cartas = new ArrayList<Carta>();
@@ -37,7 +35,6 @@ public class Mazo {
                 if (cartaValida(unaCarta))
                 	this.addCarta(unaCarta);
             }
-            cantMazoOrig = this.getCantCartas();
             reader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -65,19 +62,6 @@ public class Mazo {
 				jugador2.recibirCarta(this.darCarta());
 		}
 	}
-
-	/*protected void darCartas(Jugador jugador1, Jugador jugador2) {
-		int i = 0;
-		while (cartas.size() != 0) {
-			jugador1.recibirCarta(cartas.get(i));
-			cartas.remove(i);
-			if (!cartas.isEmpty()){
-				jugador2.recibirCarta(cartas.get(i));
-				cartas.remove(i);
-			}
-		}
-	}*/
-
 
 
 	public void eliminarCarta() {
@@ -108,35 +92,13 @@ public class Mazo {
 		return c;
 	}
 
-	//Despues de mezclarlas Las repartimos al azar. Controlamos que esa carta no tenga pócima para no que se pierda ninguna de estas
+	//Despues de mezclarlas Las repartimos al azar.
 	public void addPocimaAcarta(Pocima pocima) {
-		boolean fin = false;
-		while (!fin) { //SORTEA UNA CARTA, SI LA CARTA CON ESE NUM NO TIENE POCIMA, PONELE ESTA Y NOSVIMO, SINO VOLVE A SORTEAR
 			int i = (int) (Math.random() * cartas.size());
 			Carta cartaAux = cartas.get(i);
-			if (!cartaAux.tienePocima()) {
-				cartaAux.setPocima(pocima);
-				cantCartasConPocima ++;
-				fin = true;
-			}
-			else if (cantCartasConPocima - cantMazoOrig == 0)
-				fin = true;
-		}
+			cartaAux.setPocima(pocima);
 	}
 
-
-	/*
-	//Despues de mezclarlas Las repartimos al azar. Controlamos que esa carta no tenga pócima para no que se pierda ninguna de estas
-	public void addPocimaAcarta(Pocima pocima) {
-		//boolean fin = false;
-		while (!fin) { //SORTEA UNA CARTA, SI LA CARTA CON ESE NUM NO TIENE POCIMA, PONELE ESTA Y NOSVIMO, SINO VOLVE A SORTEAR
-			int i = (int) (Math.random() * cartas.size());
-			Carta cartaAux = cartas.get(i);
-			if (!cartaAux.tienePocima()) {
-				cartaAux.setPocima(pocima);
-				//		fin = true;
-			}
-		}*/
 
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		if (this.elegirPrimerCarta().equals(ganadora))
