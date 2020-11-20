@@ -75,16 +75,34 @@ public class Juego {
 
 	//----------------------------- POCIMAS --------------------------------------------
 	private void repartirPocimas() {
-		int i = 0;
-		while (this.getCantPocimas() != 0){
+		int fin = 0;
+		int cartasTotal = jugador1.cantidadCartas() + jugador2.cantidadCartas();
+		//if (this.getCantPocimas() > cartasTotal);
+		//fin = this.getCantPocimas() - cartasTotal;
+		while (this.getCantPocimas() != 0) {
+			int i = 0;
 			jugador1.addPocimaAcarta(this.pocimas.get(i));
-			pocimas.remove(i);
+			this.pocimas.remove(i);
 			if (!pocimas.isEmpty()) {
 				jugador2.addPocimaAcarta(this.pocimas.get(i));
 				pocimas.remove(i);
 			}
 		}
 	}
+
+	/*private void repartirPocimas() {
+		int i = 0;
+		int fin = jugador1.cantidadCartas()+jugador2.cantidadCartas();
+		while (this.getCantPocimas() != 0) {
+			jugador1.addPocimaAcarta(this.pocimas.get(i));
+			pocimas.remove(i);
+			if (!pocimas.isEmpty() && !mazo.cartas.isEmpty()) {
+				jugador2.addPocimaAcarta(this.pocimas.get(i));
+				pocimas.remove(i);
+			}
+		}
+	}*/
+
 
 	private void mezclarPocimas() {
 		Collections.shuffle(this.pocimas);

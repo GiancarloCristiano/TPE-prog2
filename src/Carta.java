@@ -54,18 +54,33 @@ public class Carta {
 	}
 
 
-	public boolean esDelMismoTipo(Carta unaCarta) { 	
+	public boolean esDelMismoTipo(Carta unaCarta) {
+		ArrayList<String> listaUno = new ArrayList<>();
+		ArrayList<String> listaDos = new ArrayList<>();
+		listaUno = unaCarta.getNombreAtributos();
+		listaDos = this.getNombreAtributos();
+		if (listaUno.size() == listaDos.size()){
+			for(int i = 0; i < listaUno.size(); i++) {
+				if (!listaDos.contains(listaUno.get(i)))
+					return false;
+			}
+			return true;
+		}
+		else return false;
+	}
+
+	/*public boolean esDelMismoTipo(Carta unaCarta) {
 		ArrayList<String> listaUno = new ArrayList<String>();
 		ArrayList<String> listaDos = new ArrayList<String>();
 		listaUno = unaCarta.getNombreAtributos();
 		listaDos = this.getNombreAtributos();
 		for(int i = 0; i < listaUno.size(); i++) {
-			if (!listaDos.contains(listaUno.get(i))) {
+			if (!listaUno.contains(listaDos.get(i))) {
 				return false;
 			}
 		}
 		return true;
-	}
+	}*/
 	
 	public double getValorAtributoPorNombre(String atributo) {
 		for(int i = 0; i < atributos.size(); i++) {
