@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class Juego {
 	private int cantTurnos;	
 	private static int nroRonda = 0;
@@ -9,8 +6,8 @@ public class Juego {
 	private Jugador jugadorTurno;
 	private Mazo mazo;
 	private boolean seJuegaConPocimas;
-	private ArrayList<Pocima> pocimas;
-	
+
+
 	public Juego(int cantTurnos, Jugador jugador1, Jugador jugador2,
 			Mazo mazo, boolean seJuegaConPocimas) {
 		this.cantTurnos = cantTurnos;
@@ -19,17 +16,20 @@ public class Juego {
 		this.mazo = mazo;
 		this.jugadorTurno = jugador1;
 		this.seJuegaConPocimas = seJuegaConPocimas;
-		pocimas = new ArrayList<Pocima>();
 	}
-	
+
+	public boolean seJuegaConPocimas() {
+		return seJuegaConPocimas;
+	}
+
 	// INICIA JUEGO
 	public void repartirCartas(){
 		mazo.mezclarCartas();
-		mazo.darCartas(jugador1, jugador2);
 		if(seJuegaConPocimas()) {
-			mezclarPocimas();
-			repartirPocimas();
+			mazo.mezclarPocimas();
+			mazo.repartirPocimas();
 		}
+		mazo.darCartas(jugador1, jugador2);
 	}
 
 	//JUGAR
@@ -73,37 +73,6 @@ public class Juego {
 			return false;
 	}
 
-	//----------------------------- POCIMAS --------------------------------------------
-	private void repartirPocimas() {
-		int i = 0;
-		while (this.getCantPocimas() != 0) {
-			jugador1.addPocimaAcarta(this.pocimas.get(i));
-			pocimas.remove(i);
-			if (!pocimas.isEmpty()) {
-				jugador2.addPocimaAcarta(this.pocimas.get(i));
-				pocimas.remove(i);
-			}
-		}
-	}
-
-
-	private void mezclarPocimas() {
-		Collections.shuffle(this.pocimas);
-	}
-
-	public void addPocima (Pocima p) {
-		if (p != null && !pocimas.contains(p))
-			pocimas.add(p);
-	}
-
-	public int getCantPocimas() {
-		return this.pocimas.size();
-	}
-
-	public boolean seJuegaConPocimas() {
-		return seJuegaConPocimas;
-	}
-	
 	//------------------------------    METODOS IMPRIMIR    -------------------------------------
 	private void imprimirNroRonda() {
 		System.out.println("---------------- RONDA " + nroRonda+" ----------------");

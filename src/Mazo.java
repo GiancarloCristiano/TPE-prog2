@@ -12,9 +12,11 @@ import javax.json.JsonReader;
 
 public class Mazo {
 	protected ArrayList<Carta> cartas;
+	private ArrayList<Pocima> pocimas;
 
 	public Mazo() {
 		cartas = new ArrayList<Carta>();
+		pocimas = new ArrayList<Pocima>();
 	}
 	
     public void cargarMazo(String jsonFile) {
@@ -54,7 +56,6 @@ public class Mazo {
 		Collections.shuffle(cartas);
 	}
 
-
 	protected void darCartas(Jugador jugador1, Jugador jugador2) {
 		while (cartas.size() != 0) {
 			jugador1.recibirCarta(this.darCarta());
@@ -62,7 +63,6 @@ public class Mazo {
 				jugador2.recibirCarta(this.darCarta());
 		}
 	}
-
 
 	public void eliminarCarta() {
 		if (cartas.size() > 0) {
@@ -92,19 +92,49 @@ public class Mazo {
 		return c;
 	}
 
-	//Despues de mezclarlas Las repartimos al azar.
-	public void addPocimaAcarta(Pocima pocima) {
-			int i = (int) (Math.random() * cartas.size());
-			Carta cartaAux = cartas.get(i);
-			cartaAux.setPocima(pocima);
-	}
-
-
 	public boolean tieneCartaGanadora(Carta ganadora) {
 		if (this.elegirPrimerCarta().equals(ganadora))
 			return true;
 		else
 			return false;
+	}
+
+	//----------------------------- POCIMAS --------------------------------------------
+	public void repartirPocimas() {
+		int i = 0;
+		if (getCantPocimas() > getCantCartas()){
+			i = getCantPocimas() - getCantCartas();
+		}
+		while (this.getCantPocimas() != i) {
+			this.addPocimaAcarta(this.pocimas.get(0));
+		}
+	}
+
+	public void mezclarPocimas() {
+		Collections.shuffle(this.pocimas);
+	}
+
+	public void addPocima (Pocima p) {
+		if (p != null && !pocimas.contains(p))
+			pocimas.add(p);
+	}
+
+	public int getCantPocimas() {
+		return this.pocimas.size();
+	}
+
+	//Despues de mezclarlas Las repartimos al azar.
+	public void addPocimaAcarta(Pocima pocima) {
+		int i = (int) (Math.random() * cartas.size());
+		Carta cartaAux = cartas.get(i);
+		if (!cartaAux.tienePocima()){
+			cartaAux.setPocima(pocima);
+			eliminarPocima(pocima);
+		}
+	}
+
+	public void eliminarPocima(Pocima pocima) {
+		pocimas.remove(pocima);
 	}
 	
 }

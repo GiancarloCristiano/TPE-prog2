@@ -62,10 +62,6 @@ public class Jugador implements Estrategia{
 		return cartasJugador.getCantCartas();
 	}
 
-	public void addPocimaAcarta(Pocima pocima) {
-		cartasJugador.addPocimaAcarta(pocima);
-	}
-
 
 	public Carta elegirPrimerCarta() {
 		return cartasJugador.elegirPrimerCarta();

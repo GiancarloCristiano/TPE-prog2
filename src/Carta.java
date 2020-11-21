@@ -69,19 +69,7 @@ public class Carta {
 		else return false;
 	}
 
-	/*public boolean esDelMismoTipo(Carta unaCarta) {
-		ArrayList<String> listaUno = new ArrayList<String>();
-		ArrayList<String> listaDos = new ArrayList<String>();
-		listaUno = unaCarta.getNombreAtributos();
-		listaDos = this.getNombreAtributos();
-		for(int i = 0; i < listaUno.size(); i++) {
-			if (!listaUno.contains(listaDos.get(i))) {
-				return false;
-			}
-		}
-		return true;
-	}*/
-	
+
 	public double getValorAtributoPorNombre(String atributo) {
 		for(int i = 0; i < atributos.size(); i++) {
 			Atributo atributoAux = atributos.get(i);
